@@ -1,17 +1,10 @@
-function serialize(root) {
-  const result = [];
-  const queue = [root];
-  while (queue.length) {
-    const node = queue.shift();
-    if (node) {
-      result.push(node.val);
-      queue.push(node.left, node.right);
-    } else {
-      result.push(null);
-    }
+const factorial = (n) => {
+  if (n === 0 || n === 1) {
+    return 1;
   }
-  while (result[result.length - 1] === null) {
-    result.pop();
+  let result = 1;
+  for (let i = 2; i <= n; i++) {
+    result *= i;
   }
   return result;
-}
+};

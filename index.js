@@ -1,17 +1,16 @@
-function levelOrderBottom(root) {
-  if (!root) return [];
+function combine(n, k) {
   const result = [];
-  const queue = [root];
-  while (queue.length) {
-    const levelSize = queue.length;
-    const currentLevel = [];
-    for (let i = 0; i < levelSize; i++) {
-      const node = queue.shift();
-      currentLevel.push(node.val);
-      if (node.left) queue.push(node.left);
-      if (node.right) queue.push(node.right);
-    }
-    result.unshift(currentLevel);
-  }
+  backtrack(1, []);
   return result;
+  function backtrack(start, current) {
+    if (current.length === k) {
+      result.push([...current]);
+      return;
+    }
+    for (let i = start; i <= n; i++) {
+      current.push(i);
+      backtrack(i + 1, current);
+      current.pop();
+    }
+  }
 }
